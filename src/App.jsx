@@ -173,7 +173,8 @@ export default function App() {
         <div className="glass-card" style={{ width: '90%', maxWidth: '420px', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '3rem 2rem', zIndex: 10 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
             <Sprout size={40} color="var(--accent-primary)" />
-            <h1 style={{ fontSize: '2rem' }}>AgriSense  </h1>
+            <h1 style={{ fontSize: '2rem' }}>  IOT-Enabled Precision Irrigation and Fertilization
+ </h1>
           </div>
           <p style={{ color: 'var(--text-secondary)', textAlign: 'center', marginBottom: '3rem' }}>
             Smart agricultural predictions and real-time dashboard analytics.
@@ -477,7 +478,8 @@ export default function App() {
       <aside className="sidebar">
         <div className="logo">
           <Sprout size={32} />
-          <span>AgriSense </span>
+          <span> IOT-Enabled Precision Irrigation and Fertilization
+ </span>
         </div>
 
         <ul className="nav-menu">
