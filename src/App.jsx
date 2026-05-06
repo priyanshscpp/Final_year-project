@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {
   Sprout, LayoutDashboard, Activity, Droplets,
   Settings, Bell, CloudRain, AlertTriangle,
-  CheckCircle, Zap, FileText, Send, X, TrendingUp, History, Download, Power, Clock, Mail
+  CheckCircle, Zap, FileText, Send, X, TrendingUp, History, Download, Power, Clock, Mail, Info, Users, Package
 } from 'lucide-react';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid,
@@ -12,6 +12,7 @@ import {
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
 import emailjs from '@emailjs/browser';
+import logoImg from './assets/logo.jpeg';
 
 // Mock Data
 const soilHistoryData = [
@@ -200,7 +201,6 @@ export default function App() {
       </div>
     );
   }
-
   // Views Dashboard
   const renderDashboard = () => (
     <div className="dashboard-grid">
@@ -472,15 +472,177 @@ export default function App() {
     </div>
   );
 
+  const renderProduct = () => (
+    <div style={{ display: 'grid', gap: '2rem', paddingBottom: '2rem' }}>
+
+      {/* Product Hero */}
+      <div className="glass-card" style={{ position: 'relative', overflow: 'hidden', padding: '3.5rem 2rem', border: '1px solid var(--glass-border)', textAlign: 'center' }}>
+        <div style={{ position: 'absolute', top: '-50%', left: '-10%', width: '300px', height: '300px', background: 'radial-gradient(circle, var(--accent-primary) 0%, transparent 70%)', opacity: 0.15, filter: 'blur(30px)' }}></div>
+        <div style={{ position: 'absolute', bottom: '-50%', right: '-10%', width: '300px', height: '300px', background: 'radial-gradient(circle, var(--accent-blue) 0%, transparent 70%)', opacity: 0.15, filter: 'blur(30px)' }}></div>
+
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.5rem' }}>
+          <div style={{ background: 'rgba(16, 185, 129, 0.1)', padding: '1.5rem', borderRadius: '50%', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
+            <Sprout size={48} color="var(--accent-primary)" />
+          </div>
+        </div>
+
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem', background: 'linear-gradient(90deg, #fff, var(--accent-primary))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+          Precision Irrigation & Fertilization
+        </h1>
+        <h3 style={{ color: 'var(--text-secondary)', fontWeight: 400, letterSpacing: '1px', marginBottom: '2rem' }}>
+          Sustainable, Resource-Efficient Smart Farming
+        </h3>
+
+        <p style={{ maxWidth: '800px', margin: '0 auto', lineHeight: 1.8, color: 'var(--text-primary)', fontSize: '1.1rem', textAlign: 'left' }}>
+          The increasing demand for sustainable and resource-efficient agriculture has encouraged the development of smart farming technologies for efficient irrigation and soil monitoring. This product focuses on precision irrigation and soil nutrient monitoring using GSM communication and automated monitoring technologies to optimize water utilization and analyze soil fertility conditions in agricultural fields.
+        </p>
+      </div>
+
+      {/* Core Technology Grid */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+
+        <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', padding: '2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+            <Activity color="var(--accent-purple)" size={28} />
+            <h3 style={{ margin: 0 }}>Integrated Sensor Suite</h3>
+          </div>
+          <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+            The proposed model integrates soil moisture, temperature, humidity, and NPK sensors for continuous monitoring of environmental and soil conditions affecting crop growth and nutrient availability.
+          </p>
+        </div>
+
+        <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', padding: '2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+            <Zap color="var(--accent-blue)" size={28} />
+            <h3 style={{ margin: 0 }}>Real-Time Processing</h3>
+          </div>
+          <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+            An ESP32 microcontroller is utilized for real-time data acquisition and processing, forming the robust brain of the precision agriculture infrastructure.
+          </p>
+        </div>
+
+        <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', padding: '2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+            <Bell color="var(--accent-orange)" size={28} />
+            <h3 style={{ margin: 0 }}>GSM Remote Alerts</h3>
+          </div>
+          <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+            GSM communication enables remote alert generation and wireless communication. Farmers stay instantly updated on field conditions from anywhere without manual intervention.
+          </p>
+        </div>
+      </div>
+
+      {/* Execution & Impact */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '1.5rem' }}>
+        <div className="glass-card" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <h2 style={{ marginBottom: '1rem', color: 'var(--accent-primary)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Droplets size={24} /> Automated Regulation</h2>
+          <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: '1.05rem' }}>
+            Based on real-time soil moisture data, the irrigation process is automatically regulated to ensure efficient water delivery directly according to the specific crop requirements, completely minimizing water wastage and removing guesswork.
+          </p>
+        </div>
+
+        <div className="glass-card" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'linear-gradient(135deg, rgba(16,185,129,0.1), transparent)' }}>
+          <h2 style={{ marginBottom: '1rem', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><TrendingUp size={24} color="var(--accent-primary)" /> Key Impact Metrics</h2>
+          <ul style={{ color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: '1.05rem', paddingLeft: '1.5rem', margin: 0 }}>
+            <li style={{ marginBottom: '0.5rem' }}>Reduces water consumption by <strong>30–50%</strong>.</li>
+            <li style={{ marginBottom: '0.5rem' }}>Dramatically improves crop productivity and resource efficiency.</li>
+            <li style={{ marginBottom: '0.5rem' }}>Cost-effective and scalable architecture for modern agriculture.</li>
+            <li>Minimizes manual intervention, driving energy-efficient and sustainable farming practices.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  );
+
+  const renderAbout = () => (
+    <div style={{ display: 'grid', gap: '2rem', paddingBottom: '2rem' }}>
+      {/* Company Header */}
+      <div className="glass-card" style={{ position: 'relative', overflow: 'hidden', padding: '3.5rem 2rem', textAlign: 'center', border: '1px solid var(--glass-border)' }}>
+        <div style={{ position: 'absolute', top: '-50%', left: '-10%', width: '300px', height: '300px', background: 'radial-gradient(circle, var(--accent-primary) 0%, transparent 70%)', opacity: 0.15, filter: 'blur(30px)' }}></div>
+        <div style={{ position: 'absolute', bottom: '-50%', right: '-10%', width: '300px', height: '300px', background: 'radial-gradient(circle, var(--accent-blue) 0%, transparent 70%)', opacity: 0.15, filter: 'blur(30px)' }}></div>
+
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem', background: 'linear-gradient(90deg, #fff, var(--accent-primary))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>FormEdge Technologies</h1>
+        <h3 style={{ color: 'var(--text-secondary)', fontWeight: 400, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '2rem' }}>Smart Fields. Better Yields.</h3>
+        <p style={{ maxWidth: '800px', margin: '0 auto', lineHeight: 1.8, color: 'var(--text-primary)', fontSize: '1.1rem' }}>
+          FormEdge Technologies is revolutionizing modern agriculture through state-of-the-art IoT integration and AI-driven precision farming.
+          Our mission is to empower farmers with actionable data, enabling optimal resource allocation, reduced environmental impact, and significantly higher crop yields.
+          By bridging the gap between hardware sensors and predictive cloud analytics, we are building the sustainable future of food production.
+        </p>
+      </div>
+
+      {/* Team Grid */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
+
+        {/* Indresh Singh */}
+        <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '2.5rem 1.5rem', transition: 'transform 0.3s ease', cursor: 'pointer' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+          <div style={{ width: '90px', height: '90px', borderRadius: '50%', background: 'linear-gradient(45deg, var(--accent-primary), var(--accent-blue))', padding: '3px', marginBottom: '1.5rem', boxShadow: '0 0 20px rgba(16, 185, 129, 0.3)' }}>
+            <div style={{ width: '100%', height: '100%', borderRadius: '50%', background: 'var(--bg-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2.5rem', fontWeight: 600 }}>I</div>
+          </div>
+          <h2 style={{ marginBottom: '0.5rem' }}>Indresh Singh</h2>
+          <h4 style={{ color: 'var(--accent-primary)', marginBottom: '1rem', fontWeight: 500 }}>Founder & CEO</h4>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.6 }}>
+            Visionary leader driving the strategic direction and overall product architecture of FormEdge to solve real-world agricultural challenges.
+          </p>
+        </div>
+
+        {/* Simran Gupta */}
+        <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '2.5rem 1.5rem', transition: 'transform 0.3s ease', cursor: 'pointer' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+          <div style={{ width: '90px', height: '90px', borderRadius: '50%', background: 'linear-gradient(45deg, var(--accent-orange), var(--danger))', padding: '3px', marginBottom: '1.5rem', boxShadow: '0 0 20px rgba(249, 115, 22, 0.3)' }}>
+            <div style={{ width: '100%', height: '100%', borderRadius: '50%', background: 'var(--bg-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2.5rem', fontWeight: 600, color: 'var(--accent-orange)' }}>S</div>
+          </div>
+          <h2 style={{ marginBottom: '0.5rem' }}>Simran Gupta</h2>
+          <h4 style={{ color: 'var(--accent-orange)', marginBottom: '1rem', fontWeight: 500 }}>Co-Founder (Management)</h4>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.6 }}>
+            Industry expert ensuring operational excellence, managing vital partnerships, and scaling our solutions to farmers globally.
+          </p>
+        </div>
+
+        {/* Arjun */}
+        <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '2.5rem 1.5rem', transition: 'transform 0.3s ease', cursor: 'pointer' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+          <div style={{ width: '90px', height: '90px', borderRadius: '50%', background: 'linear-gradient(45deg, var(--accent-purple), var(--accent-blue))', padding: '3px', marginBottom: '1.5rem', boxShadow: '0 0 20px rgba(139, 92, 246, 0.3)' }}>
+            <div style={{ width: '100%', height: '100%', borderRadius: '50%', background: 'var(--bg-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2.5rem', fontWeight: 600, color: 'var(--accent-purple)' }}>A</div>
+          </div>
+          <h2 style={{ marginBottom: '0.5rem' }}>Arjun</h2>
+          <h4 style={{ color: 'var(--accent-purple)', marginBottom: '1rem', fontWeight: 500 }}>Technical Manager (Electronics)</h4>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.6 }}>
+            Hardware specialist crafting the robust embedded systems and sensor integrations that power our real-time telemetry.
+          </p>
+        </div>
+
+        {/* Priyanshu */}
+        <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '2.5rem 1.5rem', transition: 'transform 0.3s ease', cursor: 'pointer' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+          <div style={{ width: '90px', height: '90px', borderRadius: '50%', background: 'linear-gradient(45deg, var(--accent-blue), var(--accent-primary))', padding: '3px', marginBottom: '1.5rem', boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)' }}>
+            <div style={{ width: '100%', height: '100%', borderRadius: '50%', background: 'var(--bg-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2.5rem', fontWeight: 600, color: 'var(--accent-blue)' }}>P</div>
+          </div>
+          <h2 style={{ marginBottom: '0.5rem' }}>Priyanshu</h2>
+          <h4 style={{ color: 'var(--accent-blue)', marginBottom: '1rem', fontWeight: 500 }}>Technical Manager (Software & AI)</h4>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.6 }}>
+            Lead data scientist and full-stack engineer driving our predictive machine learning models and cloud-based analytics dashboard.
+          </p>
+        </div>
+
+      </div>
+
+      {/* Contact Section */}
+      <div className="glass-card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.5rem', padding: '2rem' }}>
+        <div>
+          <h2 style={{ marginBottom: '0.5rem' }}>Get In Touch</h2>
+          <p style={{ color: 'var(--text-secondary)' }}>Interested in deploying FormEdge on your fields or partnering with us?</p>
+        </div>
+        <button className="btn btn-primary" onClick={() => window.location.href = 'mailto:contact@formedge.tech'} style={{ padding: '0.75rem 2rem', fontSize: '1rem' }}>
+          <Mail size={18} /> Contact Us
+        </button>
+      </div>
+    </div>
+  );
+
   return (
     <div className="layout-container">
       {/* Sidebar */}
       <aside className="sidebar">
-        <div className="logo">
-          <Sprout size={32} />
-          <span> FormEdge Technology : Smart Fields. Better Yield.
-          </span>
-
+        <div className="logo" style={{ padding: '0.5rem 0' }}>
+          <img src={logoImg} alt="FormEdge Technologies" style={{ maxWidth: '100%', maxHeight: '60px', objectFit: 'contain' }} />
         </div>
 
         <ul className="nav-menu">
@@ -495,6 +657,12 @@ export default function App() {
           </li>
           <li className={`nav-element ${activeTab === 'reports' ? 'active' : ''}`} onClick={() => setActiveTab('reports')}>
             <FileText size={20} /> Reports
+          </li>
+          <li className={`nav-element ${activeTab === 'product' ? 'active' : ''}`} onClick={() => setActiveTab('product')}>
+            <Package size={20} /> Our Product
+          </li>
+          <li className={`nav-element ${activeTab === 'about' ? 'active' : ''}`} onClick={() => setActiveTab('about')}>
+            <Info size={20} /> About Us
           </li>
         </ul>
 
@@ -554,6 +722,8 @@ export default function App() {
         {activeTab === 'analytics' && renderAnalytics()}
         {activeTab === 'irrigation' && renderIrrigation()}
         {activeTab === 'reports' && renderReports()}
+        {activeTab === 'product' && renderProduct()}
+        {activeTab === 'about' && renderAbout()}
 
       </main>
 
